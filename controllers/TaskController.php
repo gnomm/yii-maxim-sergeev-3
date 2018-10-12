@@ -8,8 +8,25 @@
 
 namespace app\controllers;
 
+use app\models\Test;
+use yii\web\Controller;
 
-class TaskController
+class TaskController extends Controller
 {
 
+
+    public function actionIndex()
+    {
+//        $id = \Yii::$app->request->get('id');
+        $model = new Test();
+        $title = $model->title = 'Привет';
+//        var_dump($model->validate());
+//        var_dump($model->getErrors());
+
+//        $this->layout = false;
+        return $this->render('index', [
+            'title' => $title,
+            'content' => 'dz-1'
+        ]);
+    }
 }
