@@ -62,6 +62,8 @@ class TaskController extends Controller
 //        $user->role_id = 2;
 //        $user->save();
 //
+
+
         //изменение
         //        $user = Users::findOne(2);
 //        $user->role = 2;
@@ -85,6 +87,16 @@ class TaskController extends Controller
 //        $tasks = Task::find()
 //            ->all();
 //        var_dump(Task::get);
+
+
+//                $user = new Users();
+//        $user->username = 'admin';
+//        $user->password = \Yii::$app->security->generatePasswordHash('admin');
+//        $user->role_id = 1;
+//        $user->save();
+
+
+
 
 
         $tasks = \Yii::$app->db->createCommand("

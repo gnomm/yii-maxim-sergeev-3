@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "users".
  *
  * @property int $id
- * @property string $login
+ * @property string $username
  * @property string $password
  * @property int $role_id
  * @property  Roles $role
@@ -29,11 +29,11 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['login', 'password', 'role_id'], 'required'],
+            [['username', 'password', 'role_id'], 'required'],
             [['role_id'], 'integer'],
-            [['login'], 'string', 'max' => 50],
+            [['username'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 128],
-            [['login'], 'unique'],
+            [['username'], 'unique'],
         ];
     }
 
@@ -44,7 +44,7 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'login' => 'Login',
+            'username' => 'Username',
             'password' => 'Password',
             'role_id' => 'Role ID',
         ];
