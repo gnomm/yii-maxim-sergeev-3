@@ -99,11 +99,12 @@ class TaskController extends Controller
 
 
 
-        $tasks = \Yii::$app->db->createCommand("
-        SELECT * FROM task WHERE MONTH(`created`) = MONTH(NOW()) AND YEAR(`created`) = YEAR(NOW())
-         ")
-            ->queryAll();
+//        $tasks = \Yii::$app->db->createCommand("
+//        SELECT * FROM task WHERE MONTH(`created`) = MONTH(NOW()) AND YEAR(`created`) = YEAR(NOW())
+//         ")
+//            ->queryAll();
 
+        $tasks = Task::getTaskCurrentMonth();
 
         return $this->render('index', [
             'tasks' => $tasks

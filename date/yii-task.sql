@@ -131,7 +131,7 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `role_id`) VALUES
+INSERT INTO users (`id`, login, `password`, `role_id`) VALUES
 (7, 'test3', '$2y$13$F/nyn9nigTIn85f7979izO5hlubvhckCE1Yo6uAH2/s.odeYmD/2C', 2);
 
 --
@@ -166,7 +166,7 @@ ALTER TABLE `task_old`
 --
 -- Индексы таблицы `users`
 --
-ALTER TABLE `users`
+ALTER TABLE users
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `ix_users_login` (`username`);
 
@@ -195,7 +195,7 @@ ALTER TABLE `task_old`
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
-ALTER TABLE `users`
+ALTER TABLE users
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 

@@ -52,6 +52,14 @@ class Task extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function getTaskCurrentMonth() {
+        $tasks = \Yii::$app->db->createCommand("
+        SELECT * FROM task WHERE MONTH(`created`) = MONTH(NOW()) AND YEAR(`created`) = YEAR(NOW())
+         ")
+            ->queryAll();
+        return $tasks;
+    }
+
 //    public function getRole()
 //    {
 //        return $this->hasOne(Users::className(), ['id' => 'name_id']);
