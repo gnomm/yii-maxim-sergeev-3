@@ -5,12 +5,12 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\tables\task;
+use app\models\tables\tasks;
 
 /**
- * TaskSearch represents the model behind the search form of `app\models\tables\task`.
+ * TasksSearch represents the model behind the search form of `app\models\tables\tasks`.
  */
-class TaskSearch extends task
+class TasksSearch extends tasks
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,8 @@ class TaskSearch extends task
     public function rules()
     {
         return [
-            [['id', 'name_id'], 'integer'],
-            [['task', 'description', 'created'], 'safe'],
+            [['id', 'name', 'user_id'], 'integer'],
+            [['description', 'date'], 'safe'],
         ];
     }
 
@@ -41,15 +41,12 @@ class TaskSearch extends task
      */
     public function search($params)
     {
-        $query = task::find();
+        $query = tasks::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 2
-            ]
         ]);
 
         $this->load($params);
@@ -63,12 +60,12 @@ class TaskSearch extends task
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'name_id' => $this->name_id,
-            'created' => $this->created,
+            'name' => $this->name,
+            'date' => $this->date,
+            'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'task', $this->task])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

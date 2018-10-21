@@ -8,10 +8,11 @@ use Yii;
  * This is the model class for table "users".
  *
  * @property int $id
- * @property string $username
+ * @property string $login
  * @property string $password
  * @property int $role_id
- * @property  Roles $role
+ *
+ * @property Tasks[] $tasks
  */
 class Users extends \yii\db\ActiveRecord
 {
@@ -29,11 +30,11 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'role_id'], 'required'],
+            [['login', 'password'], 'required'],
             [['role_id'], 'integer'],
-            [['username'], 'string', 'max' => 50],
+            [['login'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 128],
-            [['username'], 'unique'],
+            [['login'], 'unique'],
         ];
     }
 
@@ -44,22 +45,17 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'login' => 'Login',
             'password' => 'Password',
             'role_id' => 'Role ID',
         ];
     }
 
-    public function getRole()
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTasks()
     {
-        return $this->hasOne(Roles::className(), ['id' => 'role_id']);
-    }
-
-    public static function getUserWithRole($id)
-    {
-        return static::find()
-            ->where(['id' => $id])
-            ->with('role')
-            ->one();
+        return $this->hasMany(Tasks::className(), ['user_id' => 'id']);
     }
 }

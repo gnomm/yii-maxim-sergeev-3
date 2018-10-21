@@ -12,13 +12,15 @@ class m181015_144311_create_task_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('task', [
+        $this->createTable('tasks', [
             'id' => $this->primaryKey(),
-            'name_id' => $this->integer()->notNull(),
-            'task' => $this->string(128)->notNull(),
-            'description' => $this->string(1024)->notNull(),
-            'created' => $this->dateTime()
+            'name' => $this->string(128)->notNull(),
+            'description' => $this->text()->notNull(),
+            'date' => $this->dateTime(),
+            'user_id' => $this->integer()
         ]);
+
+        $this ->addForeignKey('fk_task_users_id', "tasks", 'user_id', 'users', 'id', 'CASCADE');
     }
 
     /**

@@ -18,6 +18,9 @@ class m181015_114321_create_users_table extends Migration
             'password' => $this->string(128)->notNull(),
             'role_id' => $this->integer()->defaultValue(1)
         ]);
+
+//        $this->addForeignKey('fk_users_roles', 'users', 'role_id', 'roles', 'id','CASCADE');
+
         $this->createIndex("ix_users_login", "users", "login", true);
     }
 

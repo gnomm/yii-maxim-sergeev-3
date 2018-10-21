@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\TaskSearch */
+/* @var $searchModel app\models\search\TasksSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Tasks';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="task-index">
+<div class="tasks-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Task', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Tasks', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name_id',
-            'task',
-            'description',
-            'created',
+            'name',
+            'description:ntext',
+            'date',
+            'user_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

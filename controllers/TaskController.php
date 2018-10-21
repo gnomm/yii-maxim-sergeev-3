@@ -9,9 +9,12 @@
 namespace app\controllers;
 
 use app\models\tables\Task;
+use app\models\tables\Tasks;
 use app\models\tables\Users;
 use app\models\Test;
 use app\models\User;
+use yii\data\ActiveDataProvider;
+use yii\debug\models\timeline\DataProvider;
 use yii\web\Controller;
 
 class TaskController extends Controller
@@ -62,8 +65,8 @@ class TaskController extends Controller
 //        $user->role_id = 2;
 //        $user->save();
 //
-
-
+//
+//
         //изменение
         //        $user = Users::findOne(2);
 //        $user->role = 2;
@@ -82,32 +85,37 @@ class TaskController extends Controller
         //вывод роли
 //        $user = Users::getUserWithRole(3);
 //        var_dump($user);
-
-
+//
+//
 //        $tasks = Task::find()
 //            ->all();
 //        var_dump(Task::get);
-
-
-//                $user = new Users();
-//        $user->username = 'admin';
-//        $user->password = \Yii::$app->security->generatePasswordHash('admin');
-//        $user->role_id = 1;
-//        $user->save();
-
-
-
-
-
+//
+//
+//
+//
+//
+//
+//
 //        $tasks = \Yii::$app->db->createCommand("
 //        SELECT * FROM task WHERE MONTH(`created`) = MONTH(NOW()) AND YEAR(`created`) = YEAR(NOW())
 //         ")
 //            ->queryAll();
 
-        $tasks = Task::getTaskCurrentMonth();
+//        $user = new Users();
+//        $user->login = 'qwerty';
+//        $user->password = \Yii::$app->security->generatePasswordHash('qwerty');
+//        $user->role_id = 2;
+//        $user->save();
+
+        $month = date('n');
+        $provider = new ActiveDataProvider([
+            'query' => Tasks::getTaskCurrentMonth($month)
+        ]);
+
 
         return $this->render('index', [
-            'tasks' => $tasks
+            'provider' => $provider
         ]);
 
     }

@@ -4,21 +4,22 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\tables\task */
+/* @var $model app\models\tables\tasks */
 /* @var $form yii\widgets\ActiveForm */
+/* @var $users  array*/
 ?>
 
-<div class="task-form">
+<div class="tasks-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name_id')->textInput() ?>
+    <?= $form->field($model, 'name')->textInput() ?>
 
-    <?= $form->field($model, 'task')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'date')->textInput(['type' => 'date']) ?>
 
-    <?= $form->field($model, 'created')->textInput(['type' => 'date']) ?>
+    <?= $form->field($model, 'user_id')->dropDownList($users) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -21,7 +21,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
-
             ],
         ]) ?>
     </p>
@@ -30,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
+            'login',
             'password',
             'role_id',
         ],

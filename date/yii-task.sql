@@ -109,7 +109,7 @@ CREATE TABLE `task_old` (
 -- Дамп данных таблицы `task_old`
 --
 
-INSERT INTO `task_old` (`id`, `name_user`, `task`, `description`, `created`) VALUES
+INSERT INTO task (`id`, `name_user`, `task`, `description`, `created`) VALUES
 (1, 'user', 'тест', 'тут будет описание', '2018-10-15 13:40:54'),
 (2, 'user2', 'тест2', 'тут будет описание 2', '2018-10-15 13:40:54'),
 (3, 'user', 'тест3', 'тут будет описание3', '2018-10-15 13:40:54');
@@ -160,7 +160,7 @@ ALTER TABLE `task`
 --
 -- Индексы таблицы `task_old`
 --
-ALTER TABLE `task_old`
+ALTER TABLE task
   ADD PRIMARY KEY (`id`);
 
 --
@@ -189,7 +189,7 @@ ALTER TABLE `task`
 --
 -- AUTO_INCREMENT для таблицы `task_old`
 --
-ALTER TABLE `task_old`
+ALTER TABLE task
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
